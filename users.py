@@ -23,7 +23,7 @@ def create():
     return 'Data registered successfully.'
 
 
-@bp_users.route('/recovery', users=users)
+@bp_users.route('/recovery')
 def recovery():
   users = user.query.all()
-  return render_template('users_recovery.html')
+  return render_template('users_recovery.html', users=users)
