@@ -1,9 +1,8 @@
 from flask import Flask
 from flask_migrate import Migrate
-from users import bp_users
 
 from database import db
-from models import db
+from users import bp_users
 
 app = Flask(__name__)
 
@@ -22,7 +21,6 @@ with app.app_context():
 app.register_blueprint(bp_users, url_prefix='/users')
 
 migrate = Migrate(app, db)
-
 
 @app.route('/')
 def index():

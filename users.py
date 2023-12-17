@@ -1,9 +1,10 @@
 from flask import Blueprint
 from flask.templating import render_template, request
-from models import user
-from database import db
 
-bp_users = Blueprint('users', __name__, template_folder="templates")
+from database import db
+from models import user
+
+bp_users = Blueprint("users", __name__, template_folder="templates")
 
 
 @bp_users.route('/create', methods=['GET', 'POST'])
