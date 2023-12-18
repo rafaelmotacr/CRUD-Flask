@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint, redirect
 from flask.templating import render_template, request
 
 from database import db
@@ -14,17 +14,53 @@ def create():
 
   if request.method == 'POST':
     name = request.form.get('name')
-    email = request.form.get('email')
-    password = request.form.get('password')
-    cpassword = request.form.get('cpassword')
+    cpf = request.form.get('cpf')
+    gender = request.form.get('gender')
+    age = request.form.get('age')
 
-    u = user(name, email, password)
+    u = user(name, cpf, gender, age)
     db.session.add(u)
     db.session.commit()
-    return 'Data registered successfully.'
+    return render_template('index.html')
 
 
-@bp_users.route('/recovery')
+@bp_users.route('/read')
 def recovery():
   users = user.query.all()
-  return render_template('users_recovery.html', users=users)
+  return render_template('users_read.html', users=users)
+
+
+@bp_users.route("/update/<int:id>", methods=['GET', 'POST'])
+def update(id):
+  u = user.query.get(id)
+  if request.method == 'GET':
+    return render_template('users_update.html', u=u)
+
+  if request.method == 'POST':
+
+    name = request.form.get('name')
+    age = request.form.get('age')
+    cpf = request.form.get('cpf')
+    gender = request.form.get('gender')
+
+    u.name = name
+    u.age = age
+    u.cpf = cpf
+    u.gender = gender
+
+    db.session.add(u)
+    db.session.commit()
+    return redirect('/users/read')
+
+
+@bp_users.route('/delete/<int:id>', methods=['GET', 'POST'])
+def delete(id):
+  u = user.query.get(id)
+
+  if (request.method == 'GET'):
+    return render_template('users_delete.html', u=u)
+
+  if request.method == 'POST':
+    db.session.delete(u)
+    db.session.commit()
+    return render_template('index.html')

@@ -1,16 +1,105 @@
-  <html>
-    <head> 
-      <title> Create Menu </title>
-    </head>
-    <body>
-      <h1>Create new user</h1>
-      <form autocomplete = "off" method='post' action = '/users/create'>
-        Name: <input type = "text" title: "write user full namel." name = "name"><br>
-        Email: <input tye = "text" title: "Write user email addres." name = "email"><br>
-      Birthday: <input tye = "text" title: "Write user birthday." name = "birthday"><br>
-        Type a Password: <input type = "password", title = "Write user password." name = "password"> <br>
-        Confirm Password: <input type = "password", title = "Write user password." name = "cpassword"> <br>
-        <input type = "submit" value = "submit", title = "Send all informations">
-      </form>
-    </body>
-  </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Menu</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    form {
+      width: 50%;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    fieldset {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+
+    legend {
+      font-weight: bold;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+
+    input[type="submit"],
+    input[type="reset"] {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    input[type="submit"] {
+      background-color: #4caf50;
+      color: #fff;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    input[type="reset"] {
+      background-color: #e74c3c; /* Cor vermelha */
+      color: #fff;
+      margin-right: 10px;
+    }
+
+    input[type="reset"]:hover {
+      background-color: #c0392b;
+    }
+
+    a {
+      color: #3498db;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Create New Student</h1>
+  <form autocomplete="off" method="post" action="/users/create" onsubmit="alert('Student Successfully Created')">
+    <fieldset>
+      <legend>Personal Data</legend>
+      Name: <input type="text" title="Write Student full name." name="name" required><br>
+      Age: <input type="number" min="18" max="50" title="Write Student age" name="age" required><br>
+      CPF: <input type="text" title="Write Student CPF" name="cpf" required><br>
+      Gender:
+      <select name="gender" >
+        <option value="">Select a Gender</option>
+        <option value="female">Female</option>
+        <option value="male">Male</option>
+        <option value="undefined">I prefer not to say...</option>
+      </select><br><br>
+      <input type="submit" value="Submit" title="Send all information">
+      <input type="reset" value="Reset" title="Reset all information">
+    </fieldset>
+  </form>
+  <a href='/'> < Go back</a>
+</body>
+</html>

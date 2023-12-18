@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_migrate import Migrate
+from flask.templating import render_template
 
 from database import db
 from users import bp_users
@@ -22,9 +23,10 @@ app.register_blueprint(bp_users, url_prefix='/users')
 
 migrate = Migrate(app, db)
 
+
 @app.route('/')
 def index():
-  return 'Hello from Flask!'
+  return render_template('index.html')
 
 
 app.run(host='0.0.0.0', port=81)

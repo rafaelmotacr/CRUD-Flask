@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update User</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    form {
+      width: 50%;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+      background-color: #4caf50;
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h1>Update an User</h1>
+  <form onsubmit = "alert('User sucefully updated')" autocomplete="off" method="post" action="/users/update/{{u.id}}">
+    Name: <input type="text" title="Write user full name." name="name" value="{{u.name}}"><br>
+    Age: <input type="number" min="18" max="50" title="Write user age." name="age" value="{{u.age}}"><br>
+    CPF: <input type="text" title="Write user CPF." name="cpf" value="{{u.cpf}}"><br>
+    Gender:
+    <select name="gender">
+      <option value="">Select a Gender</option>
+      <option value="female" {% if u.gender == "female" %}selected{% endif %}>Female</option>
+      <option value="male" {% if u.gender == "male" %}selected{% endif %}>Male</option>
+      <option value="undefined" {% if u.gender == "undefined" %}selected{% endif %}>I prefer not to say...</option>
+    </select><br><br>
+    <input type="submit" value="Update" title="Send all information">
+  </form>
+  <a href="/"> < Go back</a>
+</body>
+</html>
