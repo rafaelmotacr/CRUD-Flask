@@ -21,7 +21,7 @@ def create():
     u = user(name, cpf, gender, age)
     db.session.add(u)
     db.session.commit()
-    return render_template('index.html')
+    return redirect('/')
 
 
 @bp_users.route('/read')
@@ -63,4 +63,4 @@ def delete(id):
   if request.method == 'POST':
     db.session.delete(u)
     db.session.commit()
-    return render_template('index.html')
+    return redirect('/')

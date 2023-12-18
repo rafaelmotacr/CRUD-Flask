@@ -51,7 +51,7 @@
   <form onsubmit = "alert('User sucefully updated')" autocomplete="off" method="post" action="/users/update/{{u.id}}">
     Name: <input type="text" title="Write user full name." name="name" value="{{u.name}}"><br>
     Age: <input type="number" min="18" max="50" title="Write user age." name="age" value="{{u.age}}"><br>
-    CPF: <input type="text" title="Write user CPF." name="cpf" value="{{u.cpf}}"><br>
+    CPF: <input type="text" title="Write user CPF." name="cpf" value="{{u.cpf}}" pattern = '[0-9]{11}'><br>
     Gender:
     <select name="gender">
       <option value="">Select a Gender</option>
