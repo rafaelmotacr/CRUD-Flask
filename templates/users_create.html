@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Create Menu</title>
+  <title>Students|Create</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -88,7 +88,7 @@
       <legend>Personal Data</legend>
       Name: <input type="text" title="Write Student full name." name="name" required><br>
       Age: <input type="number" min="18" max="50" title="Write Student age" name="age" required><br>
-      CPF: <input type="text" title="Write Student CPF" name="cpf" required><br>
+      CPF: <input type="text" title="Write user CPF." name="cpf" value="{{u.cpf}}" pattern = '[0-9]{11}'><br>
       Gender:
       <select name="gender" required>
         <option value="">Select a Gender</option>
