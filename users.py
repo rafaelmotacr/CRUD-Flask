@@ -10,7 +10,7 @@ bp_users = Blueprint("users", __name__, template_folder="templates")
 @bp_users.route('/create', methods=['GET', 'POST'])
 def create():
   if request.method == 'GET':
-    return render_template('users_create.html')
+    return render_template('users_create.html', u=user)
 
   if request.method == 'POST':
     name = request.form.get('name')
